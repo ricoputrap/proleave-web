@@ -7,6 +7,7 @@ interface ContainerProps {
 export const Container = styled.nav<ContainerProps>`
   padding: 30px;
   padding-top: 0;
+  padding-right: 45px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -20,8 +21,14 @@ export const Logo = styled.div`
   align-items: center;
   height: 100px;
 
-  h3 {
+  h2 {
     margin: 0;
     color: #FFF;
   }
+`;
+
+export const Menus = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 `;

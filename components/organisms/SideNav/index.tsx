@@ -1,8 +1,9 @@
-import { Container, Logo, Menus } from "./index.styles";
+import { BtnLogout, Container, Logo, Menus } from "./index.styles";
 import proLeaveLogo from "../../../assets/logo/logo.png"
 import Image from "next/image";
 import { COLORS } from "../../../styles/variables";
 import SideNavMenuItem from "../../atoms/SideNavMenuItem";
+import { BiLogOut } from "react-icons/bi"
 
 const SideNav: React.FC = () => {
   return (
@@ -28,7 +29,15 @@ const SideNav: React.FC = () => {
       </div>
 
       {/* logout */}
-      <div>LOGOUT</div>
+      <BtnLogout 
+        variant="contained" 
+        size="large"
+        startIcon={ <BiLogOut /> }
+        bgColor={ COLORS.GRAY_600 }
+        bgColorHover={ COLORS.GRAY_500 }
+      >
+        Log Out
+      </BtnLogout>
     </Container>
   )
 }

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Button } from "@mui/material";
 
 interface ContainerProps {
   bgColor: string;
@@ -23,12 +24,35 @@ export const Logo = styled.div`
 
   h2 {
     margin: 0;
-    color: #FFF;
+    color: #FFFFFF;
   }
 `;
 
 export const Menus = styled.div`
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+`;
+
+interface BtnLogoutProps {
+  bgColor: string;
+  bgColorHover: string;
+}
+
+export const BtnLogout = styled(Button)<BtnLogoutProps>`
+  padding: 12px;
+  font-size: 16px;
+  color: #FFF;
+  background-color: ${props => props.bgColor};
+  cursor: pointer;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: none;
+  text-transform: none;
+
+  &:hover {
+    background-color: ${props => props.bgColorHover};
+  }
 `;

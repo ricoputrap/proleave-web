@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react'
+import { Department } from '../../types/departments.types';
 
-const useDepartments = (data: any[]): any[] => {
-  const [departments, setDepartments] = useState<any[]>([]);
+const useDepartments = (data: any[]): Department[] => {
+  const [departments, setDepartments] = useState<Department[]>([]);
   
   useEffect(() => {
     if (data.length === 0) return;
 
     const computedData = data.map(item => {
-      const department: any = {
+      const department: Department = {
         id: item.id,
         name: item.attributes.name
       };
 
       if (item.relationships.pic) {
-        const pic = item.relationships.pic;
+        const pic: any = item.relationships.pic;
         department.pic = {
           id: pic.data.id,
           name: pic.data.name,
@@ -23,7 +24,7 @@ const useDepartments = (data: any[]): any[] => {
       }
 
       if (item.relationships.supervisor) {
-        const supervisor = item.relationships.supervisor;
+        const supervisor: any = item.relationships.supervisor;
         department.supervisor = {
           id: supervisor.data.id,
           name: supervisor.data.name,

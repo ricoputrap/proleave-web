@@ -17,7 +17,7 @@ const DepartmentsPage: NextPage<Props> = ({ data }) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const res = await fetch("http://localhost:3002/v1/departments");
   const data: any = await res.json();
   const departments: any[] = data.data;

@@ -1,19 +1,22 @@
 import type { GetServerSideProps, NextPage } from "next";
 import { useEffect } from "react";
+import Content from "../../components/templates/Content";
 import useDepartments from "../../hooks/useDepartments";
 
 interface Props {
   data: any[]
 }
 
-const Departments: NextPage<Props> = ({ data }) => {
+const DepartmentsPage: NextPage<Props> = ({ data }) => {
   const departments = useDepartments(data);
   useEffect(() => {
     console.log("===== departments:", departments)
   }, [departments])
   
   return (
-    <div> Departments </div>
+    <Content pageTitle="Departments">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni odio quibusdam, voluptas iste dignissimos incidunt architecto tempore, alias esse, neque mollitia repudiandae natus aliquid impedit numquam exercitationem? Earum, sapiente est!
+    </Content>
   )
 }
 
@@ -29,4 +32,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-export default Departments;
+export default DepartmentsPage;

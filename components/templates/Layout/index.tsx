@@ -21,7 +21,9 @@ const Layout: React.FC<Props> = ({ children }) => {
         width: "100%"
       }}>
         <AppBar />
-        { children }
+        <Box sx={{ padding: "24px" }}>
+          { children }
+        </Box>
       </Box>
     </Box>
   )

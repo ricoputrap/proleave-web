@@ -1,11 +1,8 @@
 import styled from "@emotion/styled";
 import { Button } from "@mui/material";
+import { COLORS } from "../../../styles/variables";
 
-interface ContainerProps {
-  bgColor: string;
-}
-
-export const Container = styled.nav<ContainerProps>`
+export const Container = styled.nav`
   padding: 30px;
   padding-top: 0;
   padding-right: 45px;
@@ -13,7 +10,7 @@ export const Container = styled.nav<ContainerProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: ${props => props.bgColor};
+  background-color: ${COLORS.GRAY_700};
 `;
 
 export const Logo = styled.div`
@@ -35,16 +32,11 @@ export const Menus = styled.div`
   gap: 12px;
 `;
 
-interface BtnLogoutProps {
-  bgColor: string;
-  bgColorHover: string;
-}
-
-export const BtnLogout = styled(Button)<BtnLogoutProps>`
+export const BtnLogout = styled(Button)`
   padding: 12px;
   font-size: 16px;
   color: #FFF;
-  background-color: ${props => props.bgColor};
+  background-color: ${ COLORS.GRAY_600 };
   cursor: pointer;
   border-radius: 10px;
   display: flex;
@@ -53,6 +45,6 @@ export const BtnLogout = styled(Button)<BtnLogoutProps>`
   text-transform: none;
 
   &:hover {
-    background-color: ${props => props.bgColorHover};
+    background-color: ${ COLORS.GRAY_500 };
   }
 `;

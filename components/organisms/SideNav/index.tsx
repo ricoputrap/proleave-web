@@ -7,7 +7,7 @@ import { BiLogOut } from "react-icons/bi"
 
 const SideNav: React.FC = () => {
   return (
-    <Container bgColor={ COLORS.GRAY_700 }>
+    <Container>
       <div>
         <Logo>
           <Image
@@ -33,8 +33,6 @@ const SideNav: React.FC = () => {
         variant="contained" 
         size="large"
         startIcon={ <BiLogOut /> }
-        bgColor={ COLORS.GRAY_600 }
-        bgColorHover={ COLORS.GRAY_500 }
       >
         Log Out
       </BtnLogout>

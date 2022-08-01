@@ -1,19 +1,10 @@
-import { TableBody as TBody, TableCell, TableRow } from '@mui/material'
+import { TableBody as TBody, TableRow } from '@mui/material'
 import React from 'react'
+import { TableRowData } from '../../../types/data-table.types';
 import { Cell } from './index.styles';
 
-interface FieldData {
-  label: string;
-  url?: string;
-}
-
-interface RowData {
-  id: number;
-  fieldData: FieldData[];
-}
-
 interface Props {
-  data: RowData[];
+  data: TableRowData[];
 }
 
 const TableBody: React.FC<Props> = ({ data }) => {

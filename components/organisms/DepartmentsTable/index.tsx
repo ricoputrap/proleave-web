@@ -1,16 +1,17 @@
-import { TableContainer, Paper, Table, Box } from '@mui/material'
+import { Box } from '@mui/material'
 import React from 'react'
-import TableBody from '../../molecules/TableBody';
-import TableHeader from '../../molecules/TableHeader'
+import { TableRowData, TableHeaderField } from '../../../types/data-table.types';
+import DataTable from '../DataTable';
 
-const headerFields: any[] = [
+
+const headerFields: TableHeaderField[] = [
   { label: "Name" },
   { label: "PIC" },
   { label: "Supervisor" },
   { label: "Members" }
 ];
 
-const data: any[] = [
+const data: TableRowData[] = [
   {
     id: 1,
     fieldData: [
@@ -43,12 +44,11 @@ const data: any[] = [
 const DepartmentsTable = () => {
   return (
     <Box sx={{ marginTop: "56px" }}>
-      <TableContainer component={Paper}>
-        <Table aria-label="Departments Data Table">
-          <TableHeader fields={ headerFields } />
-          <TableBody data={ data } />
-        </Table>
-      </TableContainer>
+      <DataTable
+        ariaLabel="Departments Data Table"
+        headerFields={ headerFields }
+        data={ data }
+      />
     </Box>
   )
 }

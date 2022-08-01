@@ -1,7 +1,6 @@
 import { BtnLogout, Container, Logo, Menus } from "./index.styles";
 import proLeaveLogo from "../../../assets/logo/logo.png"
 import Image from "next/image";
-import { COLORS } from "../../../styles/variables";
 import SideNavMenuItem from "../../atoms/SideNavMenuItem";
 import { BiLogOut } from "react-icons/bi"
 

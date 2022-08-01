@@ -11,12 +11,14 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     <Box sx={{
       display: "flex",
-      height: "100vh"
+      height: "100vh",
+      width: "100vw"
     }}>
       <SideNav />
       <Box sx={{
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
+        width: "100%"
       }}>
         <AppBar />
         { children }

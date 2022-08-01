@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react"
-import { TableHeaderField, TableRowData } from "../../types/data-table.types"
+import { TableFieldData, TableHeaderField, TableRowData } from "../../types/data-table.types"
 import { Department } from "../../types/departments.types"
 
 type TableData = [
@@ -26,18 +26,34 @@ const useDepartmentsTable = (departments: Department[]): TableData => {
       });
 
       // PIC
-      deptData.fieldData.push({
+      const picData: TableFieldData = {
         id: "pic",
-        label: dept.pic?.name || "-",
-        url: dept.pic?.url || ""
-      });
+        label: dept.pic?.name || "-"
+      }
+      if (!!dept.pic) {
+        const pic = dept.pic;
+        picData.foreignKey = {
+          id: pic.id,
+          type: pic.type,
+          url: pic.url || ""
+        }
+      }
+      deptData.fieldData.push(picData);
 
       // Supervisor
-      deptData.fieldData.push({
+      const supervisorData: TableFieldData = {
         id: "supervisor",
-        label: dept.supervisor?.name || "-",
-        url: dept.supervisor?.url || ""
-      });
+        label: dept.supervisor?.name || "-"
+      }
+      if (!!dept.supervisor) {
+        const supervisor = dept.supervisor;
+        supervisorData.foreignKey = {
+          id: supervisor.id,
+          type: supervisor.type,
+          url: supervisor.url || ""
+        }
+      }
+      deptData.fieldData.push(supervisorData);
 
       // Members
       deptData.fieldData.push({

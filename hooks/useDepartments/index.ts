@@ -17,6 +17,7 @@ const useDepartments = (data: any[]): any[] => {
         department.pic = {
           id: pic.data.id,
           name: pic.data.name,
+          type: pic.data.type,
           url: pic.url
         }
       }
@@ -26,6 +27,7 @@ const useDepartments = (data: any[]): any[] => {
         department.supervisor = {
           id: supervisor.data.id,
           name: supervisor.data.name,
+          type: supervisor.data.type,
           url: supervisor.url
         }
       }

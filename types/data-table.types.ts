@@ -3,6 +3,7 @@ export type TableHeaderField = {
 }
 
 export type TableFieldData = {
+  id: string;
   label: string;
   url?: string;
 }

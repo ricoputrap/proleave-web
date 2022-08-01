@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { TableHeaderField, TableRowData } from "../../types/data-table.types"
 import { Department } from "../../types/departments.types"
 
@@ -8,50 +8,59 @@ type TableData = [
 ]
 
 const useDepartmentsTable = (departments: Department[]): TableData => {
-  const [tableData, setTableData] = useState<TableData>();
+  const [tableData, setTableData] = useState<TableRowData[]>([]);
   
   useEffect(() => {
-    console.log("===== DEPARTMENTS:", departments)
-  }, [departments])
+    const computedData: TableRowData[] = [];
 
-  const headerFields: TableHeaderField[] = [
-    { label: "Name" },
-    { label: "PIC" },
-    { label: "Supervisor" },
-    { label: "Members" }
-  ];
+    departments.map(dept => {
+      const deptData: TableRowData = {
+        id: dept.id,
+        fieldData: []
+      }
+
+      // Name
+      deptData.fieldData.push({ 
+        id: "name",
+        label: dept.name 
+      });
+
+      // PIC
+      deptData.fieldData.push({
+        id: "pic",
+        label: dept.pic?.name || "-",
+        url: dept.pic?.url || ""
+      });
+
+      // Supervisor
+      deptData.fieldData.push({
+        id: "supervisor",
+        label: dept.supervisor?.name || "-",
+        url: dept.supervisor?.url || ""
+      });
+
+      // Members
+      deptData.fieldData.push({
+        id: "members",
+        label: "0" 
+      });
+
+      computedData.push(deptData);
+    });
+
+    setTableData(computedData);
+  }, [departments]);
+
+  const headerFields: TableHeaderField[] = useMemo(() => {
+    return [
+      { label: "Name" },
+      { label: "PIC" },
+      { label: "Supervisor" },
+      { label: "Members" }
+    ];
+  }, []);
   
-  const data: TableRowData[] = [
-    {
-      id: 1,
-      fieldData: [
-        { label: "Engineering", url: "" },
-        { label: "Alex", url: "" },
-        { label: "Rico", url: "" },
-        { label: "4", url: "" },
-      ]
-    },
-    {
-      id: 2,
-      fieldData: [
-        { label: "Finance", url: "" },
-        { label: "Alex", url: "" },
-        { label: "Bambang", url: "" },
-        { label: "2", url: "" },
-      ]
-    },
-    {
-      id: 3,
-      fieldData: [
-        { label: "Human Resources", url: "" },
-        { label: "Budi", url: "" },
-        { label: "Eko", url: "" },
-        { label: "2", url: "" },
-      ]
-    },
-  ]
-
-  return [headerFields, data];
+  return [headerFields, tableData];
 }
 
 export default useDepartmentsTable

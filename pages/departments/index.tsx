@@ -1,5 +1,4 @@
 import type { GetServerSideProps, NextPage } from "next";
-import { useEffect } from "react";
 import DepartmentsTable from "../../components/organisms/DepartmentsTable";
 import Content from "../../components/templates/Content";
 import useDepartments from "../../hooks/useDepartments";
@@ -10,13 +9,10 @@ interface Props {
 
 const DepartmentsPage: NextPage<Props> = ({ data }) => {
   const departments = useDepartments(data);
-  useEffect(() => {
-    console.log("===== departments:", departments)
-  }, [departments])
   
   return (
     <Content pageTitle="Departments">
-      <DepartmentsTable />
+      <DepartmentsTable departments={ departments } />
     </Content>
   )
 }
